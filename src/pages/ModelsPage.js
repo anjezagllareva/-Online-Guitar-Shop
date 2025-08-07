@@ -1,6 +1,7 @@
 import { useQuery, gql } from '@apollo/client';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next'; 
 import './ModelsPage.css';
 
 const GET_MODELS_BY_BRAND = gql`
@@ -40,7 +41,8 @@ const normalizedBrandName = brandName.toLowerCase().replace(/\s+/g, '').replace(
   const [search, setSearch] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const modelsPerPage = 6;// How many models per page
+  const modelsPerPage = 6;
+  const { t, i18n } = useTranslation();
 
 
   const { data, loading, error } = useQuery(GET_MODELS_BY_BRAND, {
@@ -50,8 +52,8 @@ const normalizedBrandName = brandName.toLowerCase().replace(/\s+/g, '').replace(
     }
   });
 
-  if (loading) return <p>Loading models...</p>;
-  if (error) return <p>Error loading models</p>;
+  if (loading) return <p>{t('Loading models...')}</p>;
+  if (error) return <p>{t('Error loading models')}</p>;
 
 
 
@@ -73,7 +75,7 @@ const normalizedBrandName = brandName.toLowerCase().replace(/\s+/g, '').replace(
 <header className="top-header">
   <div className="back-wrapper">
     <button className="back-button" onClick={() => navigate(-1)}>
-      ← Back to Home
+     {t('← Back to Home')}
     </button>
   </div>
 
@@ -88,12 +90,11 @@ const normalizedBrandName = brandName.toLowerCase().replace(/\s+/g, '').replace(
       <section className="brand-hero">
         <div className="brand-hero-text">
           <h1>
-            Play like a <span className="highlight">Rock star</span>
+            {t('Play like a')} <span className="highlight">{t('Rock star')}</span>
           </h1>
           <p>
-            With a legacy dating back to the 1950s, {brandId} guitars blend expert craftsmanship and cutting-edge
-            innovation to deliver guitars that inspire creativity and elevate your performance.
-            Trusted by top artists worldwide, {brandId} guitars are built to play fast, sound bold, and stand out on any stage.
+            {t('With a legacy dating back to the 1950s, {{brandId}} guitars blend expert craftsmanship and cutting-edge innovation to deliver guitars that inspire creativity and elevate your performance. Trusted by top artists worldwide, {{brandId}} guitars are built to play fast, sound bold, and stand out on any stage.', { brandId })}
+
           </p>
         </div>
    <div className="brand-logo-circle">
@@ -109,18 +110,18 @@ const normalizedBrandName = brandName.toLowerCase().replace(/\s+/g, '').replace(
 
       {/* Filter Section */}
       <div className="model-filters">
-        <h2>Check out the <span className="highlight">Selection</span></h2>
+        <h2>{t('Check out the')} <span className="highlight">{t('Selection')}</span></h2>
         <div className="filters-controls">
         <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
-          <option value="">Filter by type</option>
-          <option value="ELECTRIC">Electric</option>
-          <option value="ACOUSTIC">Acoustic</option>
-          <option value="BASS">Bass</option>
+          <option value="">{t('Filter by type')}</option>
+          <option value="ELECTRIC">{t('Electric')}</option>
+          <option value="ACOUSTIC">{t('Acoustic')}</option>
+          <option value="BASS">{t('Bass')}</option>
         </select>
 
           <input
             type="text"
-            placeholder="Search by name"
+            placeholder={t('Search by name')}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -174,34 +175,40 @@ const normalizedBrandName = brandName.toLowerCase().replace(/\s+/g, '').replace(
 
     {/* Pages */}
     <div className="footer-col">
-      <h4>PAGES</h4>
+      <h4>{t('PAGES')}</h4>
       <ul>
-        <li>Store</li>
-        <li>Collections</li>
-        <li>Support</li>
+        <li>{t('Store')}</li>
+        <li>{t('Collections')}</li>
+        <li>{t('Support')}</li>
       </ul>
     </div>
 
     {/* Product */}
     <div className="footer-col">
-      <h4>PRODUCT</h4>
+      <h4>{t('PRODUCT')}</h4>
       <ul>
-        <li>Terms</li>
-        <li>Privacy Policy</li>
-        <li>Copyright</li>
+        <li>{t('Terms')}</li>
+        <li>{t('Privacy Policy')}</li>
+        <li>{t('Copyright')}</li>
       </ul>
     </div>
 
     {/* Social */}
 <div className="footer-col">
-  <h4>FOLLOW US</h4>
+  <h4>{t('FOLLOW US')}</h4>
   <div className="footer-socials">
     <span><i className="fab fa-facebook-f"></i></span>
     <span><i className="fab fa-twitter"></i></span>
     <span><i className="fab fa-instagram"></i></span>
   </div>
-</div>
-</div>
+      {/* ✅ Language Switcher */}
+            <div className="language-switcher">
+              <button onClick={() => i18n.changeLanguage('en')}>EN</button>
+              <button onClick={() => i18n.changeLanguage('mk')}>MK</button>
+              <button onClick={() => i18n.changeLanguage('sq')}>SQ</button>
+            </div>
+          </div>
+        </div>
 
 
   {/* Bottom Line */}
