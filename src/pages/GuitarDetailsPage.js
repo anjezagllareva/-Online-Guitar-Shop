@@ -93,13 +93,13 @@ export default function GuitarDetailsPage() {
           <div className="specs-tab">
             <p className="description">{model.description}</p>
             <ul>
-              <li><strong>Body Wood:</strong> {model.specs.bodyWood}</li>
-              <li><strong>Neck Wood:</strong> {model.specs.neckWood}</li>
-              <li><strong>Fingerboard:</strong> {model.specs.fingerboardWood}</li>
-              <li><strong>Pickups:</strong> {model.specs.pickups}</li>
-              <li><strong>Tuners:</strong> {model.specs.tuners}</li>
-              <li><strong>Scale Length:</strong> {model.specs.scaleLength}</li>
-              <li><strong>Bridge:</strong> {model.specs.bridge}</li>
+              <li>Body Wood: {model.specs.bodyWood}</li>
+              <li>Neck Wood: {model.specs.neckWood}</li>
+              <li>Fingerboard: {model.specs.fingerboardWood}</li>
+              <li>Pickups:{model.specs.pickups}</li>
+              <li>Tuners:{model.specs.tuners}</li>
+              <li>Scale Length:{model.specs.scaleLength}</li>
+              <li>Bridge:{model.specs.bridge}</li>
             </ul>
           </div>
         )}

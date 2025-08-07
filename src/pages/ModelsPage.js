@@ -61,7 +61,7 @@ console.log("Normalized brand name:", normalizedBrandName);
 
   const filteredModels = data.findBrandModels.filter((model) => {
     const matchesSearch = model.name.toLowerCase().includes(search.toLowerCase());
-    const matchesType = typeFilter ? model.type === typeFilter : true;
+    const matchesType = typeFilter ? model.type.toUpperCase() === typeFilter.toUpperCase() : true;
     return matchesSearch && matchesType;
   });
 
@@ -109,12 +109,13 @@ console.log("Normalized brand name:", normalizedBrandName);
       <div className="model-filters">
         <h2>Check out the <span className="highlight">Selection</span></h2>
         <div className="filters-controls">
-          <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
-            <option value="">Filter by type</option>
-            <option value="Electric">Electric</option>
-            <option value="Acoustic">Acoustic</option>
-            <option value="Bass">Bass</option>
-          </select>
+        <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
+          <option value="">Filter by type</option>
+          <option value="ELECTRIC">Electric</option>
+          <option value="ACOUSTIC">Acoustic</option>
+          <option value="BASS">Bass</option>
+        </select>
+
           <input
             type="text"
             placeholder="Search by name"
