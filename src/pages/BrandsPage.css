@@ -1,0 +1,336 @@
+/* General Layout */
+.top-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 20px 60px;
+  margin-bottom: 40px;
+}
+
+
+.top-logo {
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.top-brand-text {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1;            /* Ensures no extra vertical spacing */
+  vertical-align: middle;    /* Aligns better with image */
+}
+
+
+.brands-page {
+  font-family: 'Helvetica Neue', sans-serif;
+  color: #1f1f1f;
+  padding: 60px 80px;
+  background-color: #fff;
+   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 80px;
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero-text h1 {
+  font-size: 5rem;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-left: 70px;
+}
+
+.highlight {
+  color: #f5541c;
+}
+
+.hero-text p {
+  font-size: 1.3rem;
+  margin-top: -50px;
+  margin-left:80px;
+  color: #666;
+}
+
+.hero-image-wrapper {
+  width: 45%;
+}
+
+.hero-image {
+  width: 80%;
+  height:600px;
+  margin-left: 150px;
+  border-radius: 85px;
+  object-fit: cover;
+}
+
+/* Brands Grid */
+.brands-grid-section {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+.brands-grid-section h2 {
+  font-size: 3.5rem;
+  margin-bottom: 8px;
+}
+
+.brands-grid-section p {
+  color: #555;
+  font-size: 1.3rem;
+}
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 40px;
+  justify-items: center;
+  align-items: center;
+  padding: 60px 40px;
+  background-color: white;
+}
+
+.brand-logo-wrapper {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.brand-logo-wrapper:hover {
+  transform: scale(1.05);
+}
+
+.brand-logo {
+  max-width: 100%;
+  height: auto;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.brand-logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.brand-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  background-color: #f5541c;
+  color: white;
+}
+
+/* Footer Section */
+.footer-section {
+  background-color: #0f0f0f;
+  color: white;
+  text-align: center;   
+    padding: 80px 60px;
+}
+
+.footer-heading {
+  font-size: 60px;
+  font-weight: 400;
+  margin-bottom: 60px;
+  margin-top:-15px;
+}
+
+.footer-heading .highlight {
+  color: #f5541c;
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 300px;
+}
+
+.footer-col {
+  max-width: 300px;
+  text-align: center;
+}
+
+.footer-col h3 {
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 16px;
+}
+
+.footer-col p {
+  font-size: 16px;
+  color: #999;
+  line-height: 1.6;
+}
+
+.footer-icon {
+  font-size: 36px;
+  background-color: #262626;
+  padding: 20px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* Mobile App Section */
+.mobile-app {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 180px 80px;
+  background-color: #fff;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+.app-text h2 {
+  font-size: 52px;
+  max-width: 550px;
+  line-height: 1.4;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.app-buttons {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+}
+
+.app-buttons img {
+  height: 70px;
+}
+
+.app-mockups img {
+  height: 750px;
+  width: 850px;
+  margin-left:-100px;
+}
+.main-footer {
+  background-color: #f5f5f5;
+  font-family: 'Helvetica Neue', sans-serif;
+  width: 100%;
+  margin: 0;
+  padding: 60px 80px 20px 80px;
+  box-sizing: border-box;
+
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.06);
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+
+
+.footer-content {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-left {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-left .logo-text {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.footer-left .logo-text img {
+  height: 60px;
+}
+
+.footer-left .logo-text span {
+  font-size: 32px;
+  font-weight: 400;
+  color: #1f1f1f;
+}
+
+.footer-contact {
+  font-size: 16px;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-contact i {
+  margin-right: 12px;
+  color: #f5541c;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-col h4 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1f1f1f;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+  color: #555;
+  font-size: 18px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-socials span,
+.footer-socials .icon-button {
+  font-size: 18px;
+  margin: 0 10px;
+  background: none;
+  border: none;
+  color: #555;
+  cursor: default; /* Or pointer if you want a hand icon */
+  margin-left:60px;
+  margin-top: 10px;
+}
+
+.footer-socials .icon-button:hover {
+  color: #ff6600;
+}
+
+
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+}

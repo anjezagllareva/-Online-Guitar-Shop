@@ -1,0 +1,379 @@
+.guitar-page {
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+  min-height: 100vh; 
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 60px;
+  align-items: center;
+}
+.top-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+.back-btn {
+  background: none;
+  border: none;
+  color: #444;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+
+.logo-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: -30px;
+}
+.model-top-logo {
+  height: 40px;
+  margin-top:10px;
+}
+
+.brand-text {
+  font-size: 60px;
+  font-weight: 500;
+  margin-left: 1px;
+  margin-top:10px;
+}
+.logo-bar img {
+  height:50px;
+  margin-left: 50px;
+}
+
+.logo-bar span {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.guitar-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.guitar-info h1 {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: left;
+  padding-left: 60px;
+  line-height: 1.3;
+  white-space: pre-line;
+  margin-left: 150px;
+}
+
+.guitar-image-curve {
+  width: 700px;
+  height: 480px;
+  background: linear-gradient(to bottom, #ff9966, #ff5e19);
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -180px;
+  margin-right: -100px;
+  overflow: hidden;
+}
+
+.guitar-image-curve img {
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+}
+
+.guitar-tabs {
+  display: flex;
+   justify-content: center;
+     gap: 500px;
+  padding-left: 60px;
+  border-bottom: 1px solid #eee;
+  margin-top: 160px;
+}
+.guitar-tabs button {
+  padding: 16px 30px;
+  background: none;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+  color: #aaa;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+.guitar-tabs .active {
+  color: #f5541c;
+  border-bottom: 3px solid #f5541c;
+   width: 300px;
+}
+
+.guitar-content {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 60px 100px;
+}
+.description {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+.specs-tab ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  font-size: 16px;
+  color: #444;
+}
+.musicians-tab p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+.musicians-tab button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #f5541c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.musician-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+  padding: 0 40px;
+}
+
+.musician-card {
+  background-color: #fdeee6; /* soft beige/pink tone */
+  border-radius: 16px;
+  overflow: hidden;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.musician-card:hover {
+  transform: translateY(-5px);
+}
+
+.musician-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid #ddd;
+}
+
+.musician-card p {
+  padding: 16px 12px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  font-weight: 500;
+  margin: 0;
+}
+/* Footer Section */
+.footer-section {
+  background-color: #0f0f0f;
+  color: white;
+  text-align: center;   
+    padding: 80px 60px;
+}
+
+.footer-heading {
+  font-size: 60px;
+  font-weight: 400;
+  margin-bottom: 60px;
+  margin-top:-15px;
+}
+
+.footer-heading .highlight {
+  color: #f5541c;
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 300px;
+}
+
+.footer-col {
+  max-width: 300px;
+  text-align: center;
+}
+
+.footer-col h3 {
+  font-size: 20px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 16px;
+}
+
+.footer-col p {
+  font-size: 16px;
+  color: #999;
+  line-height: 1.6;
+}
+
+.footer-icon {
+  font-size: 36px;
+  background-color: #262626;
+  padding: 20px;
+  border-radius: 20px;
+  display: inline-block;
+}
+.main-footer {
+  background-color: #f5f5f5;
+  font-family: 'Helvetica Neue', sans-serif;
+    width: 100vw;     
+  padding: 60px 80px 20px 80px;
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: -80px;
+  margin-bottom: -30px;
+}
+
+.footer-content {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+
+
+.footer-left {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-left .logo-text {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.footer-left .logo-text img {
+  height: 60px;
+}
+
+.footer-left .logo-text span {
+  font-size: 32px;
+  font-weight: 400;
+  color: #1f1f1f;
+}
+
+.footer-contact {
+  font-size: 16px;
+  color: #555;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-contact i {
+  margin-right: 12px;
+  color: #f5541c;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-col h4 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1f1f1f;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+  color: #555;
+  font-size: 18px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 16px;
+}
+
+.footer-socials span,
+.footer-socials .icon-button {
+  font-size: 18px;
+  margin: 0 10px;
+  background: none;
+  border: none;
+  color: #555;
+  cursor: default; /* Or pointer if you want a hand icon */
+  margin-left:60px;
+  margin-top: 10px;
+}
+
+.footer-socials .icon-button:hover {
+  color: #ff6600;
+}
+
+
+.footer-bottom {
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+}
