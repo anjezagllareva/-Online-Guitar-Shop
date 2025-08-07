@@ -1,6 +1,7 @@
 import { useQuery, gql } from '@apollo/client';
 import { useParams,useNavigate  } from 'react-router-dom';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next'; 
 import './GuitarDetailsPage.css'; 
 
 const GET_GUITAR_DETAILS = gql`
@@ -32,13 +33,15 @@ export default function GuitarDetailsPage() {
   const navigate = useNavigate();
   const [tab, setTab] = useState('specs');
   const [visibleMusicians, setVisibleMusicians] = useState(2);
+  const { t, i18n } = useTranslation();
+
 
   const { data, loading, error } = useQuery(GET_GUITAR_DETAILS, {
     variables: { brandId, modelId }
   });
 
-  if (loading) return <p>Loading guitar details...</p>;
-  if (error) return <p>Error loading guitar</p>;
+  if (loading) return <p>{t('Loading guitar details...')}</p>;
+  if (error) return <p>{t('Error loading guitar')}</p>;
 
   const model = data.findUniqueModel;
 
@@ -47,7 +50,7 @@ export default function GuitarDetailsPage() {
       {/* Back Button + Branding */}
       <header className="top-header">
       <div className="top-bar">
-        <button onClick={() => navigate(-1)} className="back-btn">← Back To List</button>
+        <button onClick={() => navigate(-1)} className="back-btn">{t('← Back To List')}</button>
          </div>
         <div className="logo-bar">
           <img src="/logo.png" alt="VibeStrings Logo" className="model-top-logo" />
@@ -77,13 +80,13 @@ export default function GuitarDetailsPage() {
           className={tab === 'specs' ? 'active' : ''}
           onClick={() => setTab('specs')}
         >
-          Specification
+         {t('Specification')}
         </button>
         <button
           className={tab === 'musicians' ? 'active' : ''}
           onClick={() => setTab('musicians')}
         >
-          Who plays it?
+         {t('Who plays it?')}
         </button>
       </div>
 
@@ -93,13 +96,13 @@ export default function GuitarDetailsPage() {
           <div className="specs-tab">
             <p className="description">{model.description}</p>
             <ul>
-              <li>Body Wood: {model.specs.bodyWood}</li>
-              <li>Neck Wood: {model.specs.neckWood}</li>
-              <li>Fingerboard: {model.specs.fingerboardWood}</li>
-              <li>Pickups:{model.specs.pickups}</li>
-              <li>Tuners:{model.specs.tuners}</li>
-              <li>Scale Length:{model.specs.scaleLength}</li>
-              <li>Bridge:{model.specs.bridge}</li>
+              <li>{t('Body Wood')}: {model.specs.bodyWood}</li>
+              <li>{t('Neck Wood')}: {model.specs.neckWood}</li>
+              <li>{t('Fingerboard')}: {model.specs.fingerboardWood}</li>
+              <li>{t('Pickups')}: {model.specs.pickups}</li>
+              <li>{t('Tuners')}: {model.specs.tuners}</li>
+              <li>{t('Scale Length')}: {model.specs.scaleLength}</li>
+              <li>{t('Bridge')}: {model.specs.bridge}</li>
             </ul>
           </div>
         )}
@@ -114,7 +117,7 @@ export default function GuitarDetailsPage() {
             ))}
             {visibleMusicians < model.musicians.length && (
               <button onClick={() => setVisibleMusicians(prev => prev + 4)}>
-                Show More
+                {t('Show More')}
               </button>
             )}
           </div>
@@ -138,34 +141,40 @@ export default function GuitarDetailsPage() {
 
     {/* Pages */}
     <div className="footer-col">
-      <h4>PAGES</h4>
+      <h4>{t('PAGES')}</h4>
       <ul>
-        <li>Store</li>
-        <li>Collections</li>
-        <li>Support</li>
+        <li>{t('Store')}</li>
+        <li>{t('Collections')}</li>
+        <li>{t('Support')}</li>
       </ul>
     </div>
 
     {/* Product */}
     <div className="footer-col">
-      <h4>PRODUCT</h4>
+      <h4>{t('PRODUCT')}</h4>
       <ul>
-        <li>Terms</li>
-        <li>Privacy Policy</li>
-        <li>Copyright</li>
+        <li>{t('Terms')}</li>
+        <li>{t('Privacy Policy')}</li>
+        <li>{t('Copyright')}</li>
       </ul>
     </div>
 
     {/* Social */}
 <div className="footer-col">
-  <h4>FOLLOW US</h4>
+  <h4>{t('FOLLOW US')}</h4>
   <div className="footer-socials">
     <span><i className="fab fa-facebook-f"></i></span>
     <span><i className="fab fa-twitter"></i></span>
     <span><i className="fab fa-instagram"></i></span>
   </div>
-</div>
-</div>
+      {/* ✅ Language Switcher */}
+            <div className="language-switcher">
+              <button onClick={() => i18n.changeLanguage('en')}>EN</button>
+              <button onClick={() => i18n.changeLanguage('mk')}>MK</button>
+              <button onClick={() => i18n.changeLanguage('sq')}>SQ</button>
+            </div>
+          </div>
+        </div>
 
 
   {/* Bottom Line */}

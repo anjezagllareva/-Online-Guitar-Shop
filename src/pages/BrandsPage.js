@@ -1,6 +1,7 @@
 import './BrandsPage.css';
 import { useQuery, gql } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const GET_BRANDS = gql`
   query GetBrands {
@@ -14,6 +15,7 @@ const GET_BRANDS = gql`
 export default function BrandsPage() {
   const { loading, error, data } = useQuery(GET_BRANDS);
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error loading brands</p>;
@@ -30,10 +32,10 @@ export default function BrandsPage() {
       <section className="hero">
         <div className="hero-text">
           <h1>
-            Browse top quality <span className="highlight">Guitars</span> online
+            {t('Browse top quality')} <span className="highlight">{t('Guitars')}</span> {t('online')}
           </h1>
           <p>
-            Explore 60k+ limited collections of branded guitars online with VibeStrings.
+            {t('Explore 60k+ limited collections of branded guitars online with VibeStrings.')}       
           </p>
         </div>
         <div className="hero-image-wrapper">
@@ -44,9 +46,9 @@ export default function BrandsPage() {
       {/* Brand Section */}
       <section className="brands-grid-section">
         <h2>
-          Featuring the <span className="highlight">Best Brands</span>
+          {t('Featuring the')} <span className="highlight">{t('Best Brands')}</span>
         </h2>
-        <p>Select your preferred brand and explore our collection</p>
+        <p>{t('Select your preferred brand and explore our collection')}</p>
 
        <div className="brands-grid">
   {data.findAllBrands.map((brand) => (
@@ -70,23 +72,23 @@ export default function BrandsPage() {
       {/* Benefits Section */}
       <section className="footer-section">
   <h2 className="footer-heading">
-    Why try <span className="highlight">VibeStrings?</span>
+   {t('Why try')} <span className="highlight">{t('VibeStrings?')}</span>
   </h2>
   <div className="footer-columns">
     <div className="footer-col">
       <div className="footer-icon">🔲</div>
-      <h3>SMOOTH BROWSING</h3>
-      <p>Lorem Ipsum Dolor Sit Amet,<br />Consectetur Adipiscing Elit.</p>
+      <h3>{t('SMOOTH BROWSING')}</h3>
+ <p>{t('Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.')}</p>
     </div>
     <div className="footer-col">
       <div className="footer-icon">🚚</div>
-      <h3>EASY DELIVERY</h3>
-      <p>Lorem Ipsum Dolor Sit Amet,<br />Consectetur Adipiscing Elit.</p>
+       <h3>{t('EASY DELIVERY')}</h3>
+    <p>{t('Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.')}</p>
     </div>
     <div className="footer-col">
       <div className="footer-icon">💳</div>
-      <h3>SWIFT PAYMENTS</h3>
-      <p>Lorem Ipsum Dolor Sit Amet,<br />Consectetur Adipiscing Elit.</p>
+  <h3>{t('SWIFT PAYMENTS')}</h3>
+            <p>{t('Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit.')}</p>
     </div>
   </div>
 </section>
@@ -94,7 +96,7 @@ export default function BrandsPage() {
       <section className="mobile-app">
         <div className="app-text">
           <h2>
-            Browse and buy your <span className="highlight">favorite guitars</span> with VibeStrings.
+           {t('Browse and buy your')} <span className="highlight">{t('favorite guitars')}</span> {t('with VibeStrings.')}
           </h2>
           <div className="app-buttons">
             <img src="/google-play.png" alt="Google Play" />
@@ -122,35 +124,39 @@ export default function BrandsPage() {
 
     {/* Pages */}
     <div className="footer-col">
-      <h4>PAGES</h4>
-      <ul>
-        <li>Store</li>
-        <li>Collections</li>
-        <li>Support</li>
-      </ul>
-    </div>
+            <h4>{t('PAGES')}</h4>
+            <ul>
+              <li>{t('Store')}</li>
+              <li>{t('Collections')}</li>
+              <li>{t('Support')}</li>
+            </ul>
+          </div>
 
-    {/* Product */}
-    <div className="footer-col">
-      <h4>PRODUCT</h4>
-      <ul>
-        <li>Terms</li>
-        <li>Privacy Policy</li>
-        <li>Copyright</li>
-      </ul>
-    </div>
+          <div className="footer-col">
+            <h4>{t('PRODUCT')}</h4>
+            <ul>
+              <li>{t('Terms')}</li>
+              <li>{t('Privacy Policy')}</li>
+              <li>{t('Copyright')}</li>
+            </ul>
+          </div>
 
-    {/* Social */}
-<div className="footer-col">
-  <h4>FOLLOW US</h4>
-  <div className="footer-socials">
-    <span><i className="fab fa-facebook-f"></i></span>
-    <span><i className="fab fa-twitter"></i></span>
-    <span><i className="fab fa-instagram"></i></span>
-  </div>
-</div>
-</div>
+          <div className="footer-col">
+            <h4>{t('FOLLOW US')}</h4>
+            <div className="footer-socials">
+              <span><i className="fab fa-facebook-f"></i></span>
+              <span><i className="fab fa-twitter"></i></span>
+              <span><i className="fab fa-instagram"></i></span>
+            </div>
 
+            {/* ✅ Language Switcher */}
+            <div className="language-switcher">
+              <button onClick={() => i18n.changeLanguage('en')}>EN</button>
+              <button onClick={() => i18n.changeLanguage('mk')}>MK</button>
+              <button onClick={() => i18n.changeLanguage('sq')}>SQ</button>
+            </div>
+          </div>
+        </div>
 
   {/* Bottom Line */}
   <div className="footer-bottom">
