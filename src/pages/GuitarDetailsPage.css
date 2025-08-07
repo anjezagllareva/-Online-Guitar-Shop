@@ -111,7 +111,7 @@
   border: none;
   font-weight: 600;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
   color: #aaa;
   border-bottom: 3px solid transparent;
   transition: all 0.3s ease;
@@ -128,7 +128,7 @@
   padding: 0 60px 100px;
 }
 .description {
-  font-size: 16px;
+  font-size: 18px;
   color: #333;
   margin-bottom: 20px;
   line-height: 1.6;
@@ -136,7 +136,7 @@
 .specs-tab ul {
   list-style-type: disc;
   padding-left: 20px;
-  font-size: 16px;
+  font-size: 20px;
   color: #444;
 }
 .musicians-tab p {
