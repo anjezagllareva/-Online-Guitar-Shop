@@ -34,13 +34,14 @@ const brandNameMap = {
 
 const brandName = brandNameMap[brandId] || 'Unknown';
 const normalizedBrandName = brandName.toLowerCase().replace(/\s+/g, '').replace(/[^a-z]/gi, '');
-console.log("Raw brandId:", brandId);
-console.log("Mapped brand name:", brandName);
-console.log("Normalized brand name:", normalizedBrandName);
+
 
 
   const [search, setSearch] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const modelsPerPage = 6;// How many models per page
+
 
   const { data, loading, error } = useQuery(GET_MODELS_BY_BRAND, {
     variables: {
@@ -49,22 +50,23 @@ console.log("Normalized brand name:", normalizedBrandName);
     }
   });
 
-  console.log("Raw brandId:", brandId);
-  console.log("Mapped brand name:", brandName);
-  console.log("Normalized brand name:", normalizedBrandName);
-  console.log("Fetched models:", data?.findBrandModels);
-
   if (loading) return <p>Loading models...</p>;
   if (error) return <p>Error loading models</p>;
 
 
 
-  const filteredModels = data.findBrandModels.filter((model) => {
+    const filteredModels = data.findBrandModels.filter((model) => {
     const matchesSearch = model.name.toLowerCase().includes(search.toLowerCase());
     const matchesType = typeFilter ? model.type.toUpperCase() === typeFilter.toUpperCase() : true;
     return matchesSearch && matchesType;
   });
 
+ const totalPages = Math.ceil(filteredModels.length / modelsPerPage);
+  const paginatedModels = filteredModels.slice(
+    (currentPage - 1) * modelsPerPage,
+    currentPage * modelsPerPage
+  
+  );
    return (
     <div className="models-page">
  {/* Top Navigation */}
@@ -127,7 +129,7 @@ console.log("Normalized brand name:", normalizedBrandName);
 
       {/* Guitar Grid */}
       <div className="models-grid">
-        {filteredModels.map((model) => (
+        {paginatedModels.map((model) => (
           <div
             key={model.id}
             className="model-card"
@@ -139,6 +141,21 @@ console.log("Normalized brand name:", normalizedBrandName);
           </div>
         ))}
       </div>
+
+           {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="pagination">
+          {Array.from({ length: totalPages }, (_, i) => (
+            <button
+              key={i + 1}
+              className={currentPage === i + 1 ? 'active' : ''}
+              onClick={() => setCurrentPage(i + 1)}
+            >
+              {i + 1}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Footer Section */}
       <section className="main-footer">
