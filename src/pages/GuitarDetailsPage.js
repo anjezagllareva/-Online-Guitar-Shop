@@ -2,7 +2,7 @@ import { useQuery, gql } from '@apollo/client';
 import { useParams,useNavigate  } from 'react-router-dom';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next'; 
-import './GuitarDetailsPage.css'; 
+import './style/GuitarDetailsPage.css'; 
 
 const GET_GUITAR_DETAILS = gql`
   query GetGuitarDetails($brandId: ID!, $modelId: ID!) {

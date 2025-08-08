@@ -2,7 +2,7 @@ import { useQuery, gql } from '@apollo/client';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next'; 
-import './ModelsPage.css';
+import './style/ModelsPage.css';
 
 const GET_MODELS_BY_BRAND = gql`
   query GetModels($id: ID!, $sortBy: sortBy!) {
@@ -30,7 +30,6 @@ const brandNameMap = {
   8: 'Epiphone',
   9: 'Jackson',
   10: 'Music Man',
-  // Add more mappings as needed
 };
 
 const brandName = brandNameMap[brandId] || 'Unknown';
@@ -52,7 +51,7 @@ const normalizedBrandName = brandName.toLowerCase().replace(/\s+/g, '').replace(
   });
   const loadMoreRef = useRef();
 
- // Infinite scroll trigger
+ // Infinite scroll 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {

@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<BrandsPage />} />
         <Route path="/models/:brandId" element={<ModelsPage />} />
- <Route path="/guitar/:brandId/:modelId" element={<GuitarDetailsPage />} /> {/* ✅ This one */}
+ <Route path="/guitar/:brandId/:modelId" element={<GuitarDetailsPage />} /> 
       </Routes>
     </Router>
   );
