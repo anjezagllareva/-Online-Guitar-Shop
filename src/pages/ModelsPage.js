@@ -1,6 +1,6 @@
 import { useQuery, gql } from '@apollo/client';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next'; 
 import './ModelsPage.css';
 
@@ -40,8 +40,7 @@ const normalizedBrandName = brandName.toLowerCase().replace(/\s+/g, '').replace(
 
   const [search, setSearch] = useState('');
   const [typeFilter, setTypeFilter] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const modelsPerPage = 6;
+  const [visibleCount, setVisibleCount] = useState(6);
   const { t, i18n } = useTranslation();
 
 
@@ -51,6 +50,26 @@ const normalizedBrandName = brandName.toLowerCase().replace(/\s+/g, '').replace(
       sortBy: { field: "name", order: "DESC" }
     }
   });
+  const loadMoreRef = useRef();
+
+ // Infinite scroll trigger
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setVisibleCount((prev) => prev + 6);
+      }
+    }, { threshold: 1 });
+
+    if (loadMoreRef.current) {
+      observer.observe(loadMoreRef.current);
+    }
+
+    return () => {
+      if (loadMoreRef.current) {
+        observer.unobserve(loadMoreRef.current);
+      }
+    };
+  }, []);
 
   if (loading) return <p>{t('Loading models...')}</p>;
   if (error) return <p>{t('Error loading models')}</p>;
@@ -63,12 +82,7 @@ const normalizedBrandName = brandName.toLowerCase().replace(/\s+/g, '').replace(
     return matchesSearch && matchesType;
   });
 
- const totalPages = Math.ceil(filteredModels.length / modelsPerPage);
-  const paginatedModels = filteredModels.slice(
-    (currentPage - 1) * modelsPerPage,
-    currentPage * modelsPerPage
-  
-  );
+const modelsToShow = filteredModels.slice(0, visibleCount);
    return (
     <div className="models-page">
  {/* Top Navigation */}
@@ -130,7 +144,7 @@ const normalizedBrandName = brandName.toLowerCase().replace(/\s+/g, '').replace(
 
       {/* Guitar Grid */}
       <div className="models-grid">
-        {paginatedModels.map((model) => (
+      {modelsToShow.map((model) => (
           <div
             key={model.id}
             className="model-card"
@@ -143,20 +157,8 @@ const normalizedBrandName = brandName.toLowerCase().replace(/\s+/g, '').replace(
         ))}
       </div>
 
-           {/* Pagination */}
-      {totalPages > 1 && (
-        <div className="pagination">
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i + 1}
-              className={currentPage === i + 1 ? 'active' : ''}
-              onClick={() => setCurrentPage(i + 1)}
-            >
-              {i + 1}
-            </button>
-          ))}
-        </div>
-      )}
+   {/* Infinite Scroll Trigger */}
+      <div ref={loadMoreRef} style={{ height: "40px", marginTop: "20px" }} />
 
       {/* Footer Section */}
       <section className="main-footer">
