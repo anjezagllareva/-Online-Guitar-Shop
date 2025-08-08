@@ -1,4 +1,4 @@
-import './BrandsPage.css';
+import './style/BrandsPage.css';
 import { useQuery, gql } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -58,7 +58,7 @@ export default function BrandsPage() {
       onClick={() => navigate(`/models/${brand.id}`)}
     >
       <img
-        src={brand.logoUrl || `/logos/${brand.name.toLowerCase()}.png`} // fallback
+        src={brand.logoUrl || `/logos/${brand.name.toLowerCase()}.png`} 
         alt={brand.name}
         className="brand-logo"
       />
